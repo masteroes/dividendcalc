@@ -1,0 +1,37 @@
+{
+  "name": "dividend-calculator-tote-bet",
+  "version": "1.0.0",
+  "description": "Services and utilites for calculating tote bet dividents for Tabcorp",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp runTest",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/masteroes/dividendcalc.git"
+  },
+  "keywords": [
+    "Tote",
+    "betting",
+    "dividend",
+    "calculator",
+    "services",
+    "masteroes"
+  ],
+  "author": "Vishnu Narayan Dubey",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/masteroes/dividendcalc/issues"
+  },
+  "homepage": "https://github.com/masteroes/dividendcalc#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^4.0.0",
+    "gulp-istanbul": "^1.1.2",
+    "gulp-jsdoc3": "^1.0.1",
+    "gulp-mocha": "^4.3.1",
+    "gulp-shrinkwrap": "^2.0.3",
+    "run-sequence": "^2.1.0"
+  }
+}
