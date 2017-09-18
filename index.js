@@ -26,6 +26,7 @@ reader.prompt(true);
 
 reader.on('line', function (line) {
 	InputData.push(line);
+	//Result will be last Line
 	if ((/Result/).test(line)) {
 		reader.close();
 	} else {
@@ -34,6 +35,7 @@ reader.on('line', function (line) {
 
 });
 
+//After input stream is closed
 reader.on('close', function (line) {
 	logger.info("InputData", InputData);
 	var betsAndResult = Bets.getFormattedBets(InputData);
