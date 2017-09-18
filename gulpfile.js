@@ -10,7 +10,7 @@ var mocha = require('gulp-mocha');
 var istanbul = require('gulp-istanbul');
 var runSequence = require('run-sequence');
 var eslint = require('gulp-eslint');
-var jsdoc = require("gulp-jsdoc");
+var jsdoc = require("gulp-jsdoc3");
 var shrinkwrap = require('gulp-shrinkwrap');
 
 var path     = require('path');
@@ -39,15 +39,12 @@ gulp.task('shrinkwrap', function () {
 });
 // mocha test runner
 gulp.task('mochaTest', function (cb) {
-    gulp.src(['util/*.js', './*.js'])
+    gulp.src(['src/**/*.js'])
         .pipe(istanbul()) // Covering files
         .pipe(istanbul.hookRequire()) // Force `require` to return covered files
         .on('finish', function () {
 
-            process.env.NODE_ENV = 'unittest';
-            var app = require('./server/server');
-
-            gulp.src(['test/*-test.js'])
+            gulp.src(['test/**/*-test.js'])
                                 .pipe(mocha({ timeout: 10000 }))
                                 .pipe(istanbul.writeReports({dir:'reports/coverage'}))// Creating the reports after tests runned
                                 .on('end', function(){
@@ -79,4 +76,4 @@ gulp.task('default', function (callback) {
 
 gulp.task('build', ['default']);
 
-//gulp.on('stop', function() { process.exit(0); });
+gulp.on('stop', function() { process.exit(0); });
