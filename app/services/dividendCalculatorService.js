@@ -39,14 +39,17 @@ function dividendCalculatorService(product, selectionRule, raceResult) {
 		//Get sum of all the stake of product
 
 		var poolTotal = _calculatePoolTotal(winningProducts, product.productType);
+		//Divison by share is done for Place calculation
 		var afterCommissionStake = (poolTotal - (poolTotal * (product.commission / 100))) / product.share;
 		logger.info("poolTotal " + poolTotal);
 		logger.info("afterCommissionStake " + afterCommissionStake);
-
+		//Get winners list from bets with particular selection rules
 		var winningSelectedProducts = _calculateSelectionProducts(winningProducts, selectionRule, raceResult);
+		//add all the states only for winners
 		var winnersTotalStake = _calculatePoolTotal(winningSelectedProducts, product.productType);
 		logger.info("winningSelectedProducts " + winningSelectedProducts.length);
 		logger.info("winnersTotalStake" + winnersTotalStake);
+		//If no wiiner than the Dividend will be X1 times else find propotion upto 2 decimal places
 		return winnersTotalStake === 0 ? 1 : (afterCommissionStake / winnersTotalStake).toFixed(config.decimalPlaces);
 	};
 
