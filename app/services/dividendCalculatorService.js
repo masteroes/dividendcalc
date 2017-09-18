@@ -1,7 +1,5 @@
 var logger = require("../../defaultLogger.js");
 var config = require('../../config');
-var path = require("path");
-var fs = require("fs");
 
 /**
  * This service used product information , from configs, the selection rule function and race result object
@@ -29,7 +27,7 @@ function dividendCalculatorService(product, selectionRule, raceResult) {
 			}
 		});
 		return poolTotal;
-	}
+	};
 
 	/**
 	 * Calculates dividends for all bets uses values at the time of object initialization
@@ -50,7 +48,7 @@ function dividendCalculatorService(product, selectionRule, raceResult) {
 		logger.info("winningSelectedProducts " + winningSelectedProducts.length);
 		logger.info("winnersTotalStake" + winnersTotalStake);
 		return winnersTotalStake === 0 ? 1 : (afterCommissionStake / winnersTotalStake).toFixed(config.decimalPlaces);
-	}
+	};
 
 	/**
 	 * private method to get selection products using selection rule
@@ -67,11 +65,11 @@ function dividendCalculatorService(product, selectionRule, raceResult) {
 		});
 		logger.info("_calculateSelectionProducts selected" + JSON.stringify(selection));
 		return selection;
-	}
+	};
 
 	return {
 		calculateDividends: calculateDividends
-	}
+	};
 
 }
 

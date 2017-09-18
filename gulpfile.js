@@ -21,7 +21,7 @@ var process = require("process");
 
 gulp.task('eslint', function () {
 	var target = path.resolve(__dirname, 'reports');
-	return gulp.src(['util/*.js', './*.js'])
+	return gulp.src(['./app/**/*.js', './*.js'])
 		.pipe(eslint())
 		.pipe(eslint.format("html", function (results) {
 			fs.writeFileSync(target + '/lint-results.html', results);
@@ -38,7 +38,7 @@ gulp.task('shrinkwrap', function () {
 });
 // mocha test runner
 gulp.task('mochaTest', function (cb) {
-	gulp.src(['src/**/*.js'])
+	gulp.src(['app/**/*.js'])
 		.pipe(istanbul()) // Covering files
 		.pipe(istanbul.hookRequire()) // Force `require` to return covered files
 		.on('finish', function () {

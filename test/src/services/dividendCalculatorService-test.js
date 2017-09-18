@@ -18,15 +18,15 @@ var exactaTestData =
 		{type:'E',selections:[2,1],stake:20},
 		{type:'E',selections:[1,2],stake:30}
 	];
-var selectionRule = require('../../../src/rules/winRule.js');
-var firstPlaceRule = require("../../../src/rules/firstPlaceRule.js");
-var secondPlaceRule = require("../../../src/rules/secondPlaceRule.js");
-var thirdPlaceRule = require("../../../src/rules/thirdPlaceRule.js");
-var exactaRule = require("../../../src/rules/exactaRule.js");
+var selectionRule = require('../../../app/rules/winRule.js');
+var firstPlaceRule = require("../../../app/rules/firstPlaceRule.js");
+var secondPlaceRule = require("../../../app/rules/secondPlaceRule.js");
+var thirdPlaceRule = require("../../../app/rules/thirdPlaceRule.js");
+var exactaRule = require("../../../app/rules/exactaRule.js");
 
-var results = require('../../../src/models/Result.js');
+var results = require('../../../app/models/Result.js');
 productConstants = require('../../../config.js').productConstants;
-var dividendCalculatorService = require('../../../src/services/dividendCalculatorService.js');
+var dividendCalculatorService = require('../../../app/services/dividendCalculatorService.js');
 
 describe('dividendCalculatorService Place ', function () {
 	var winResult = new results(2, 3, 1);
