@@ -5,8 +5,10 @@ var defaultLogger;
 defaultLogger = bunyan.createLogger(
     {
         name: 'LOGS',
-        stream: process.stdout,
-        level: 'info'
+        level: 'info',
+        streams: [{
+            path: 'infoLevel.log'
+        }]
     }
 );
 module.exports = defaultLogger;

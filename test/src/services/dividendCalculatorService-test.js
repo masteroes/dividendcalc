@@ -6,7 +6,7 @@ var testData =
         {type:'W',selections:[3],stake:10},
         {type:'W',selections:[1],stake:30}
     ]
-var selectionRule = require('../../../src/util/winRule.js');
+var selectionRule = require('../../../src/rules/winRule.js');
 var results = require('../../../src/models/Result.js');
 productConstants = require('../../../config.js').productConstants;
 var winResult = new results(2, 3, 1);

@@ -1,3 +1,4 @@
+var validators = require('./validaton.js');
 var deliMeterConstant = require('../../config').validationConstants;
 var logger = require("../../defaultLogger.js");
 var results = require("../models/Result.js");
@@ -41,6 +42,10 @@ function BetFormatter() {
 
         for (var i = 0; i < inputData.length; i++) {
             var bet = inputData[i];
+            var error=validators(bet);
+            if(error){
+                formattedObject.Errors=error;
+            }
             var Bet = new bets(bet.split(deliMeterConstant.COLON_DELIMITER)[1], _getSelections(bet.split(deliMeterConstant.COLON_DELIMITER)[2]),
                 parseFloat(bet.split(deliMeterConstant.COLON_DELIMITER)[3])
             );
@@ -54,6 +59,10 @@ function BetFormatter() {
      * @private
      */
     function _formatsResult(result) {
+        var error=validators(result);
+        if(error){
+            formattedObject.Errors=error;
+        }
         var Result = new results(
             +result.split(deliMeterConstant.COLON_DELIMITER)[1],
             +result.split(deliMeterConstant.COLON_DELIMITER)[2],
