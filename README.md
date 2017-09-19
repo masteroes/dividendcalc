@@ -12,6 +12,7 @@ All rule functions are defined in rules folder. These functions takes product an
 [index.js](https://github.com/masteroes/dividendcalc/blob/master/index.js) is the implementation of the dividend calculator service. It uses ['readline'](https://nodejs.org/api/readline.html) module of Node.js. on entering a string in bet format the 'line' event triggers capturing of data in to input array. The line containg results closes the input stream.
 
 On 'close' event we format the inputData array create an initializes dividendCalculatorService with product , rule and result. Passing bets array will result in dividend float value upto 2 decimal places. 
+
 The Output is formatted as per problem requirements.
 
 # Usage
@@ -34,7 +35,9 @@ Usage Result:<first>:<second>:<third>
 Type data or copy paste from  [InputDataForTerminal](https://raw.githubusercontent.com/masteroes/dividendcalc/master/InputDataForTerminal) file
 Result line will be the last input line 
 
-The output will be flashed on Terminal in 
+# Output
+
+The output will be flashed on Terminal in  <product>:<winning selection>:<dividend> format.
 
 # Run test cases and Reports
 ```sh
