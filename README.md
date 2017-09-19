@@ -37,7 +37,7 @@ Result line will be the last input line
 
 # Output
 
-The output will be flashed on Terminal in  <product>:<winning selection>:<dividend> format.
+The output will be flashed on Terminal in  \<product\>:\<winning selection\>:\<dividend\> format.
 
 # Run test cases and Reports
 ```sh
