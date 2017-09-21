@@ -45,11 +45,12 @@ function BetFormatter() {
 			var error = validators(bet);
 			if (error) {
 				formattedObject.Errors = error;
+			} else {
+				var Bet = new bets(bet.split(deliMeterConstant.COLON_DELIMITER)[1], _getSelections(bet.split(deliMeterConstant.COLON_DELIMITER)[2]),
+					parseFloat(bet.split(deliMeterConstant.COLON_DELIMITER)[3])
+				);
+				formattedObject.Bets.push(Bet);
 			}
-			var Bet = new bets(bet.split(deliMeterConstant.COLON_DELIMITER)[1], _getSelections(bet.split(deliMeterConstant.COLON_DELIMITER)[2]),
-				parseFloat(bet.split(deliMeterConstant.COLON_DELIMITER)[3])
-			);
-			formattedObject.Bets.push(Bet);
 		}
 	}
 
@@ -62,12 +63,13 @@ function BetFormatter() {
 		var error = validators(result);
 		if (error) {
 			formattedObject.Errors = error;
+		} else {
+			var Result = new results(
+				+result.split(deliMeterConstant.COLON_DELIMITER)[1],
+				+result.split(deliMeterConstant.COLON_DELIMITER)[2],
+				+result.split(deliMeterConstant.COLON_DELIMITER)[3]);
+			formattedObject.Result = Result;
 		}
-		var Result = new results(
-			+result.split(deliMeterConstant.COLON_DELIMITER)[1],
-			+result.split(deliMeterConstant.COLON_DELIMITER)[2],
-			+result.split(deliMeterConstant.COLON_DELIMITER)[3]);
-		formattedObject.Result = Result;
 	}
 
 	/*
@@ -78,7 +80,8 @@ function BetFormatter() {
 	_self.getFormattedBets = function (inputData) {
 		formattedObject = {
 			Bets: [],
-			Result: null
+			Result: null,
+			Errors: null
 		};
 		var resultData = inputData.pop();
 		logger.info("bets", inputData);
