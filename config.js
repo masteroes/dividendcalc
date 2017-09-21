@@ -1,6 +1,6 @@
 var validationConstants = {
-	REGEX_BETS: /(Bet:)[A-Z]:[0-9](,[0-9])?:[0-9]+/g,
-	REGEX_RESULT: /(Result:)[0-9]:[0-9]:[0-9]/g,
+	REGEX_BETS: /(Bet:)[A-Z]:[0-9](,[0-9])?:[0-9]+/,
+	REGEX_RESULT: /(Result:)[0-9]:[0-9]:[0-9]/,
 	COLON_DELIMITER: ':',
 	COMMA_DELIMITER: ',',
 	"DOLLAR_SIGN": '$'

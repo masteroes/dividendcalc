@@ -30,6 +30,23 @@ function dividendCalculatorService(product, selectionRule, raceResult) {
 	};
 
 	/**
+	 * private method to get selection products using selection rule
+	 * @param products
+	 * @param selectionRule
+	 * @param raceResult
+	 * @returns collection of selection
+	 * @private
+	 */
+	var _calculateSelectionProducts = function (products, selectionRule, raceResult) {
+		var selection = {};
+		selection = products.filter(function (product) {
+			return selectionRule(product, raceResult);
+		});
+		logger.info("_calculateSelectionProducts selected" + JSON.stringify(selection));
+		return selection;
+	};
+
+	/**
 	 * Calculates dividends for all bets uses values at the time of object initialization
 	 * @param winningProducts
 	 * @returns {*}
@@ -53,22 +70,6 @@ function dividendCalculatorService(product, selectionRule, raceResult) {
 		return winnersTotalStake === 0 ? 1 : (afterCommissionStake / winnersTotalStake).toFixed(config.decimalPlaces);
 	};
 
-	/**
-	 * private method to get selection products using selection rule
-	 * @param products
-	 * @param selectionRule
-	 * @param raceResult
-	 * @returns collection of selection
-	 * @private
-	 */
-	var _calculateSelectionProducts = function (products, selectionRule, raceResult) {
-		var selection = {};
-		selection = products.filter(function (product) {
-			return selectionRule(product, raceResult);
-		});
-		logger.info("_calculateSelectionProducts selected" + JSON.stringify(selection));
-		return selection;
-	};
 
 	return {
 		calculateDividends: calculateDividends
